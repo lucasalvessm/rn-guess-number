@@ -5,16 +5,18 @@ const AppButton = ({
   style,
   title,
   color,
+  disabled = false,
   onPress = () => {},
 }: {
   style?: any;
   title: string;
   color?: string;
+  disabled?: boolean;
   onPress: Function;
 }) => {
   return (
     <View style={{ ...styles.button, ...style }}>
-      <Button color={color} title={title} onPress={() => onPress()} />
+      <Button disabled={disabled} color={color} title={title} onPress={() => onPress()} />
     </View>
   );
 };
