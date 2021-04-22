@@ -8,7 +8,7 @@ const AppTitle = ({ style, children }: { style?: any; children: any }) => (
 const styles = StyleSheet.create({
   text: {
     fontFamily: 'open-sans-bold',
-    fontSize: 18
+    fontSize: 18,
   },
 });
 

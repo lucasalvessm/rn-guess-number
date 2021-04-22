@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   },
   resultText: {
     textAlign: 'center',
-    fontSize: 20
+    fontSize: 20,
   },
   imageContainer: {
     width: 300,

@@ -40,7 +40,10 @@ const GameScreen = ({
 
   useEffect(() => {
     if (currentGuess === userChoice) {
-      navigation.navigate('GameOverScreen', { rounds, rightNumber: currentGuess });
+      navigation.navigate('GameOverScreen', {
+        rounds,
+        rightNumber: currentGuess,
+      });
     }
   }, [currentGuess, userChoice]);
 

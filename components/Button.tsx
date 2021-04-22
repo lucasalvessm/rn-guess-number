@@ -16,7 +16,12 @@ const AppButton = ({
 }) => {
   return (
     <View style={{ ...styles.button, ...style }}>
-      <Button disabled={disabled} color={color} title={title} onPress={() => onPress()} />
+      <Button
+        disabled={disabled}
+        color={color}
+        title={title}
+        onPress={() => onPress()}
+      />
     </View>
   );
 };
