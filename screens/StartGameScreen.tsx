@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Alert,
   Keyboard,
@@ -12,8 +12,10 @@ import Card from '../components/Card';
 import NumberContainer from '../components/NumberContainer';
 import Input from '../components/Input';
 import Colors from '../constants/colors';
+import AppText from '../components/AppText';
+import AppTitle from '../components/AppTitle';
 
-const StartGameScreen = ({ navigation }: any) => {
+const StartGameScreen = ({ navigation, route: { params } }: any) => {
   const [enteredValue, setEnteredValue] = useState('');
   const [confirmed, setConfirmed] = useState(false);
   const [selectedNumber, setSelectedNumber] = useState<number>(0);
@@ -27,7 +29,10 @@ const StartGameScreen = ({ navigation }: any) => {
     setConfirmed(false);
   };
 
+  const restart = params?.restart;
+
   const confirmInputHandler = () => {
+    if (!enteredValue) return;
     const chosenNumber = parseInt(enteredValue);
 
     if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
@@ -49,13 +54,13 @@ const StartGameScreen = ({ navigation }: any) => {
   if (confirmed) {
     confirmedOutput = (
       <Card style={styles.summaryContainer}>
-        <Text>You selected</Text>
+        <AppText>You selected</AppText>
         <NumberContainer selectedNumber={selectedNumber} />
         <Button
           title="START GAME"
           onPress={() =>
             navigation.navigate('GameScreen', {
-              userChoice: selectedNumber
+              userChoice: selectedNumber,
             })
           }
         />
@@ -70,9 +75,9 @@ const StartGameScreen = ({ navigation }: any) => {
       }}
     >
       <View style={styles.screen}>
-        <Text style={styles.title}>The Game Screen!</Text>
+        <AppTitle style={styles.title}>The Game Screen!</AppTitle>
         <Card style={styles.inputContainer}>
-          <Text>Select a Number</Text>
+          <AppText>Select a Number</AppText>
           <Input
             style={styles.input}
             blurOnSubmit
@@ -92,7 +97,6 @@ const StartGameScreen = ({ navigation }: any) => {
             <Button
               color={Colors.accent}
               title="Confirm"
-              disabled={!enteredValue}
               onPress={confirmInputHandler}
             />
           </View>

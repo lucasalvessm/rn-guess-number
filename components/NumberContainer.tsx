@@ -1,15 +1,15 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   View
 } from 'react-native';
+import AppText from '../components/AppText';
 import Colors from '../constants/colors';
 
 const NumberContainer = ({ selectedNumber }: { selectedNumber: number }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.number}>{selectedNumber}</Text>
+      <AppText style={styles.number}>{selectedNumber}</AppText>
     </View>
   );
 };
